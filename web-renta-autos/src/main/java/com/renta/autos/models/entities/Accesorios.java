@@ -23,7 +23,7 @@ public class Accesorios {
 	@Column(name = "nombre_acc")
 	private String nombre;
 	
-	@JoinColumn(name= "fk_auto",referencedColumnName = "codigo_aut") // Se mapea con una clave foranea
+	@JoinColumn(name= "fk_auto_accesorios",referencedColumnName = "codigo_aut") // Se mapea con una clave foranea
 	@ManyToOne
 	private Auto auto;
 	

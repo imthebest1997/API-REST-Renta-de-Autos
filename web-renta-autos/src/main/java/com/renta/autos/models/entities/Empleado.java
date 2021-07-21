@@ -1,11 +1,15 @@
 package com.renta.autos.models.entities;
 
+import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +24,10 @@ public class Empleado extends Persona{
 	@Column(name = "numero_autos_rentados_emp")
 	private int numeroAutosRentados;
 
+	@OneToMany(mappedBy = "empleado", fetch = FetchType.LAZY)
+	private List<Renta> rentaEmpleados;
+
+	
 	public Empleado(Integer idEmpleado) {
 		super();
 		this.idEmpleado = idEmpleado;

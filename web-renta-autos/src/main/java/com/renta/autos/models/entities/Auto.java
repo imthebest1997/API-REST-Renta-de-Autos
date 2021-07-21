@@ -38,7 +38,10 @@ public class Auto {
 	private String color;
 
 	@OneToMany(mappedBy = "auto", fetch = FetchType.LAZY)
-	private List<Accesorios> divisiones;
+	private List<Accesorios> accesorios;
+
+	@OneToMany(mappedBy = "auto", fetch = FetchType.LAZY)
+	private List<Renta> rentaAutos;
 	
 	public Auto(Integer idAuto) {
 		super();

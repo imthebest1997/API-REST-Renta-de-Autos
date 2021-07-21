@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +27,10 @@ public class Factura {
 	@Column(name = "total_fac")	
 	private float total;
 
+	@JoinColumn(name= "fk_renta",referencedColumnName = "codigo_ren") // Se mapea con una clave foranea
+	@ManyToOne
+	private Renta renta;	
+	
 	public Factura(Integer idFactura) {
 		super();
 		this.idFactura = idFactura;
