@@ -1,12 +1,17 @@
 package com.renta.autos.models.entities;
 
+import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "auto")
@@ -32,6 +37,9 @@ public class Auto {
 	@Column(name = "color_aut")
 	private String color;
 
+	@OneToMany(mappedBy = "auto", fetch = FetchType.LAZY)
+	private List<Accesorios> divisiones;
+	
 	public Auto(Integer idAuto) {
 		super();
 		this.idAuto = idAuto;

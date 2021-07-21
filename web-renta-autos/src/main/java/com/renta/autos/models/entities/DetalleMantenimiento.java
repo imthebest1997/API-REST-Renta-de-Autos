@@ -6,7 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "detalle_mantenimiento")
@@ -23,6 +26,12 @@ public class DetalleMantenimiento {
 	@Column(name = "descripcion_det")
 	private String descripcion;
 
+	@JoinColumn(name= "fk_manteniento",referencedColumnName = "codigo_man") // Se mapea con una clave foranea
+	@ManyToOne
+	private Mantenimiento mantenimiento;
+
+	
+	
 	public DetalleMantenimiento(Integer idDetalleMantenimiento) {
 		super();
 		this.idDetalleMantenimiento = idDetalleMantenimiento;

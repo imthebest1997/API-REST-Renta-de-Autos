@@ -1,14 +1,18 @@
 package com.renta.autos.models.entities;
 
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "mantenimiento")
@@ -25,6 +29,11 @@ public class Mantenimiento {
 	@Column(name = "fecha_fin_man")
 	private Calendar fechaFin;
 
+	//mappedBy va el nombre del atributo de esta clase en la clase asociada
+	@OneToMany(mappedBy = "mantenimiento", fetch = FetchType.LAZY)
+	private List<DetalleMantenimiento> divisiones;
+
+	
 	public Mantenimiento(Integer idMantenimiento) {
 		super();
 		this.idMantenimiento = idMantenimiento;
