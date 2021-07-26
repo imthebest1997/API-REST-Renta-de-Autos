@@ -1,8 +1,7 @@
 package com.renta.autos.models.entities;
 
+import java.io.Serializable;
 import java.util.Calendar;
-import java.util.List;
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,18 +10,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "renta")
-public class Renta {
+public class Renta implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
 	@Column(name = "codigo_ren")
-	private Integer idRenta;//Atributo que se mapea con la Primary Key
+	private Integer codigoRenta;//Atributo que se mapea con la Primary Key
 
 	@Column(name = "fecha_inicio_ren")
 	private Calendar inicio;
@@ -33,36 +36,36 @@ public class Renta {
 	@Column(name = "metodo_pago_ren")
 	private String metodoPago;
 
-	@JoinColumn(name= "fk_auto_renta",referencedColumnName = "codigo_aut") // Se mapea con una clave foranea
-	@ManyToOne
-	private Auto auto;
+	@Column(name = "total_ren")
+	private float total;
+	
+	@JoinColumn(name = "codigo_aut", nullable = false)
+	@OneToOne(fetch = FetchType.LAZY)        
+	private Automovil automovil;
 
-	@JoinColumn(name= "fk_cliente",referencedColumnName = "codigo_cli") // Se mapea con una clave foranea
-	@ManyToOne
-	private Cliente cliente;
-
-	@JoinColumn(name= "fk_empleado",referencedColumnName = "codigo_emp") // Se mapea con una clave foranea
-	@ManyToOne
+	@JoinColumn(name = "codigo_emp", nullable = false)
+	@OneToOne(fetch = FetchType.LAZY)        
 	private Empleado empleado;
 	
-	@OneToMany(mappedBy = "renta", fetch = FetchType.LAZY)
-	private List<Factura> facturaRenta;
+	@JoinColumn(name = "codigo_cli", nullable = false)
+	@OneToOne(fetch = FetchType.LAZY)        
+	private Cliente cliente;
 	
-	public Renta(Integer idRenta) {
+	public Renta(Integer codigoRenta) {
 		super();
-		this.idRenta = idRenta;
+		this.codigoRenta = codigoRenta;
 	}
 
 	public Renta() {
 		super();
 	}
 
-	public Integer getIdRenta() {
-		return idRenta;
+	public Integer getCodigoRenta() {
+		return codigoRenta;
 	}
 
-	public void setIdRenta(Integer idRenta) {
-		this.idRenta = idRenta;
+	public void setCodigoRenta(Integer codigoRenta) {
+		this.codigoRenta = codigoRenta;
 	}
 
 	public Calendar getInicio() {
@@ -87,6 +90,42 @@ public class Renta {
 
 	public void setMetodoPago(String metodoPago) {
 		this.metodoPago = metodoPago;
+	}
+
+//	public Auto getAuto() {
+//		return auto;
+//	}
+//
+//	public void setAuto(Auto auto) {
+//		this.auto = auto;
+//	}
+//
+//	public Cliente getCliente() {
+//		return cliente;
+//	}
+//
+//	public void setCliente(Cliente cliente) {
+//		this.cliente = cliente;
+//	}
+//
+//	public Empleado getEmpleado() {
+//		return empleado;
+//	}
+//
+//	public void setEmpleado(Empleado empleado) {
+//		this.empleado = empleado;
+//	}
+//
+//	public List<Factura> getFacturaRenta() {
+//		return facturaRenta;
+//	}
+//
+//	public void setFacturaRenta(List<Factura> facturaRenta) {
+//		this.facturaRenta = facturaRenta;
+//	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	

@@ -1,48 +1,47 @@
 package com.renta.autos.models.entities;
 
-import java.util.List;
+import java.io.Serializable;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "cliente")
-public class Cliente extends Persona{
+public class Cliente extends Persona implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
 	@Column(name = "codigo_cli")
-	private Integer idCliente;//Atributo que se mapea con la Primary Key
+	private Integer codigoCliente;//Atributo que se mapea con la Primary Key
 	
 	@Column(name = "numero_licencia_cli")
 	private String numeroLicencia;
-
-	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
-	private List<Renta> rentasClientes;
-
 	
-	public Cliente(Integer idCliente) {
+	public Cliente(Integer codigoCliente) {
 		super();
-		this.idCliente = idCliente;
+		this.codigoCliente = codigoCliente;
 	}
 
 	public Cliente() {
 		super();
 	}
 
-	public Integer getIdCliente() {
-		return idCliente;
+	public Integer getCodigoCliente() {
+		return codigoCliente;
 	}
 
-	public void setIdCliente(Integer idCliente) {
-		this.idCliente = idCliente;
+	public void setCodigoCliente(Integer codigoCliente) {
+		this.codigoCliente = codigoCliente;
 	}
 
 	public String getNumLicencia() {
@@ -51,6 +50,26 @@ public class Cliente extends Persona{
 
 	public void setNumLicencia(String numLicencia) {
 		this.numeroLicencia = numLicencia;
+	}
+
+	public String getNumeroLicencia() {
+		return numeroLicencia;
+	}
+
+	public void setNumeroLicencia(String numeroLicencia) {
+		this.numeroLicencia = numeroLicencia;
+	}
+
+//	public List<Renta> getRentasClientes() {
+//		return rentasClientes;
+//	}
+//
+//	public void setRentasClientes(List<Renta> rentasClientes) {
+//		this.rentasClientes = rentasClientes;
+//	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	

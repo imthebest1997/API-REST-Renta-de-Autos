@@ -1,11 +1,18 @@
 package com.renta.autos.models.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public abstract class Persona {
+public abstract class Persona implements Serializable{
 		
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = "cedula")	
 	private String cedula;
 
@@ -59,6 +66,10 @@ public abstract class Persona {
 
 	public void setCorreoElectronico(String correoElectronico) {
 		this.correoElectronico = correoElectronico;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	
 	

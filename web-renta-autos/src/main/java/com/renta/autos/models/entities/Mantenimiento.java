@@ -1,5 +1,6 @@
 package com.renta.autos.models.entities;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
 
@@ -10,18 +11,25 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name = "mantenimiento")
-public class Mantenimiento {
+public class Mantenimiento implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
 	@Column(name = "codigo_man")
-	private Integer idMantenimiento;//Atributo que se mapea con la Primary Key
+	private Integer codigoMantenimiento;//Atributo que se mapea con la Primary Key
 
 	@Column(name = "fecha_inicio_man")
 	private Calendar fechaInicio;
@@ -31,24 +39,28 @@ public class Mantenimiento {
 
 	//mappedBy va el nombre del atributo de esta clase en la clase asociada
 	@OneToMany(mappedBy = "mantenimiento", fetch = FetchType.LAZY)
-	private List<DetalleMantenimiento> divisiones;
+	private List<DetalleMantenimiento> detalleMantenimiento;
+	
+	@JoinColumn(name= "fk_automovil",referencedColumnName = "codigo_aut") // Se mapea con una clave foranea
+	@ManyToOne
+	private Automovil automovil;
 
 	
-	public Mantenimiento(Integer idMantenimiento) {
+	public Mantenimiento(Integer codigoMantenimiento) {
 		super();
-		this.idMantenimiento = idMantenimiento;
+		this.codigoMantenimiento = codigoMantenimiento;
 	}	
 
 	public Mantenimiento() {
 		super();
 	}
 
-	public Integer getIdMantenimiento() {
-		return idMantenimiento;
+	public Integer getCodigoMantenimiento() {
+		return codigoMantenimiento;
 	}
 
-	public void setIdMantenimiento(Integer idMantenimiento) {
-		this.idMantenimiento = idMantenimiento;
+	public void setCodigoMantenimiento(Integer codigoMantenimiento) {
+		this.codigoMantenimiento = codigoMantenimiento;
 	}
 
 	public Calendar getFechaInicio() {
@@ -65,6 +77,19 @@ public class Mantenimiento {
 
 	public void setFechaFin(Calendar fechaFin) {
 		this.fechaFin = fechaFin;
+	}
+
+	public List<DetalleMantenimiento> getDetalleMantenimiento() {
+		return detalleMantenimiento;
+	}
+
+	public void setDetalleMantenimiento(List<DetalleMantenimiento> detalleMantenimiento) {
+		this.detalleMantenimiento = detalleMantenimiento;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}	
 
+	
 }

@@ -1,5 +1,7 @@
 package com.renta.autos.models.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,35 +15,40 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "accesorios")
-public class Accesorios {
+public class Accesorios implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
 	@Column(name = "codigo_acc")
-	private Integer idAccesorios;//Atributo que se mapea con la Primary Key
+	private Integer codigoAccesorios;//Atributo que se mapea con la Primary Key
 
 	@Column(name = "nombre_acc")
 	private String nombre;
 	
 	@JoinColumn(name= "fk_auto_accesorios",referencedColumnName = "codigo_aut") // Se mapea con una clave foranea
 	@ManyToOne
-	private Auto auto;
+	private Automovil automovil;
 	
-	public Accesorios(Integer idAccesorios) {
+	public Accesorios(Integer codigoAccesorios) {
 		super();
-		this.idAccesorios = idAccesorios;
+		this.codigoAccesorios = codigoAccesorios;
 	}
 
 	public Accesorios() {
 		super();
 	}
 
-	public Integer getIdAccesorios() {
-		return idAccesorios;
+	public Integer getCodigoAccesorios() {
+		return codigoAccesorios;
 	}
 
-	public void setIdAccesorios(Integer idAccesorios) {
-		this.idAccesorios = idAccesorios;
+	public void setCodigoAccesorios(Integer codigoAccesorios) {
+		this.codigoAccesorios = codigoAccesorios;
 	}
 
 	public String getNombre() {
@@ -51,5 +58,18 @@ public class Accesorios {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+	public Automovil getAuto() {
+		return automovil;
+	}
+
+	public void setAuto(Automovil automovil) {
+		this.automovil = automovil;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	
 }

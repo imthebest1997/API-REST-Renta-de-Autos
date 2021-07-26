@@ -1,48 +1,47 @@
 package com.renta.autos.models.entities;
 
-import java.util.List;
+import java.io.Serializable;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "empleado")
-public class Empleado extends Persona{
+public class Empleado extends Persona implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
 	@Column(name = "codigo_emp")
-	private Integer idEmpleado;//Atributo que se mapea con la Primary Key
+	private Integer codigoEmpleado;//Atributo que se mapea con la Primary Key
 
 	@Column(name = "numero_autos_rentados_emp")
 	private int numeroAutosRentados;
-
-	@OneToMany(mappedBy = "empleado", fetch = FetchType.LAZY)
-	private List<Renta> rentaEmpleados;
-
 	
-	public Empleado(Integer idEmpleado) {
+	public Empleado(Integer codigoEmpleado) {
 		super();
-		this.idEmpleado = idEmpleado;
+		this.codigoEmpleado = codigoEmpleado;
 	}
 
 	public Empleado() {
 		super();
 	}
 
-	public Integer getIdEmpleado() {
-		return idEmpleado;
+	public Integer getCodigoEmpleado() {
+		return codigoEmpleado;
 	}
 
-	public void setIdEmpleado(Integer idEmpleado) {
-		this.idEmpleado = idEmpleado;
+	public void setCodigoEmpleado(Integer codigoEmpleado) {
+		this.codigoEmpleado = codigoEmpleado;
 	}
 
 	public int getNumAutosRentados() {
@@ -51,5 +50,27 @@ public class Empleado extends Persona{
 
 	public void setNumAutosRentados(int numAutosRentados) {
 		this.numeroAutosRentados = numAutosRentados;
+	}
+
+	public int getNumeroAutosRentados() {
+		return numeroAutosRentados;
+	}
+
+	public void setNumeroAutosRentados(int numeroAutosRentados) {
+		this.numeroAutosRentados = numeroAutosRentados;
+	}
+
+//	public List<Renta> getRentaEmpleados() {
+//		return rentaEmpleados;
+//	}
+//
+//	public void setRentaEmpleados(List<Renta> rentaEmpleados) {
+//		this.rentaEmpleados = rentaEmpleados;
+//	}
+//
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}	
+	
+	
 }

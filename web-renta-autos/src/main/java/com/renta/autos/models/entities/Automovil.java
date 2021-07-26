@@ -1,5 +1,6 @@
 package com.renta.autos.models.entities;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Basic;
@@ -14,13 +15,18 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "auto")
-public class Auto {
+@Table(name = "automovil")
+public class Automovil implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
 	@Column(name = "codigo_aut")
-	private Integer idAuto;//Atributo que se mapea con la Primary Key
+	private Integer codigoAutomovil;//Atributo que se mapea con la Primary Key
 
 	@Column(name = "disponibilidad_aut")
 	private boolean disponibilidad;
@@ -37,27 +43,28 @@ public class Auto {
 	@Column(name = "color_aut")
 	private String color;
 
-	@OneToMany(mappedBy = "auto", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "automovil", fetch = FetchType.LAZY)
+	private List<Mantenimiento> mantenimiento;
+
+	@OneToMany(mappedBy = "automovil", fetch = FetchType.LAZY)
 	private List<Accesorios> accesorios;
 
-	@OneToMany(mappedBy = "auto", fetch = FetchType.LAZY)
-	private List<Renta> rentaAutos;
 	
-	public Auto(Integer idAuto) {
+	public Automovil(Integer codigoAutomovil) {
 		super();
-		this.idAuto = idAuto;
+		this.codigoAutomovil = codigoAutomovil;
 	}
 	
-	public Auto() {
+	public Automovil() {
 		super();
 	}
 
-	public Integer getIdAuto() {
-		return idAuto;
+	public Integer getCodigoAuto() {
+		return codigoAutomovil;
 	}
 
-	public void setIdAuto(Integer idAuto) {
-		this.idAuto = idAuto;
+	public void setCodigoAuto(Integer codigoAuto) {
+		this.codigoAutomovil = codigoAuto;
 	}
 
 	public boolean isDisponible() {
@@ -100,4 +107,41 @@ public class Auto {
 		this.color = color;
 	}
 
+	public boolean isDisponibilidad() {
+		return disponibilidad;
+	}
+
+	public void setDisponibilidad(boolean disponibilidad) {
+		this.disponibilidad = disponibilidad;
+	}
+
+	public String getNumeroPlaca() {
+		return numeroPlaca;
+	}
+
+	public void setNumeroPlaca(String numeroPlaca) {
+		this.numeroPlaca = numeroPlaca;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Integer getCodigoAutomovil() {
+		return codigoAutomovil;
+	}
+
+	public void setCodigoAutomovil(Integer codigoAutomovil) {
+		this.codigoAutomovil = codigoAutomovil;
+	}
+
+	public List<Mantenimiento> getMantenimiento() {
+		return mantenimiento;
+	}
+
+	public void setMantenimiento(List<Mantenimiento> mantenimiento) {
+		this.mantenimiento = mantenimiento;
+	}
+
+	
 }
