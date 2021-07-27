@@ -89,6 +89,14 @@ public class Mantenimiento implements Serializable{
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public Automovil getAutomovil() {
+		return automovil;
+	}
+
+	public void setAutomovil(Automovil automovil) {
+		this.automovil = automovil;
 	}	
 
 	

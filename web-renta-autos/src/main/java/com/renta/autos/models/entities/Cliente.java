@@ -60,14 +60,6 @@ public class Cliente extends Persona implements Serializable{
 		this.numeroLicencia = numeroLicencia;
 	}
 
-//	public List<Renta> getRentasClientes() {
-//		return rentasClientes;
-//	}
-//
-//	public void setRentasClientes(List<Renta> rentasClientes) {
-//		this.rentasClientes = rentasClientes;
-//	}
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

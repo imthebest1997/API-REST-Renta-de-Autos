@@ -60,14 +60,6 @@ public class Empleado extends Persona implements Serializable{
 		this.numeroAutosRentados = numeroAutosRentados;
 	}
 
-//	public List<Renta> getRentaEmpleados() {
-//		return rentaEmpleados;
-//	}
-//
-//	public void setRentaEmpleados(List<Renta> rentaEmpleados) {
-//		this.rentaEmpleados = rentaEmpleados;
-//	}
-//
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}	

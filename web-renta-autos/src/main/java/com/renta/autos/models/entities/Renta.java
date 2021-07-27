@@ -92,41 +92,39 @@ public class Renta implements Serializable{
 		this.metodoPago = metodoPago;
 	}
 
-//	public Auto getAuto() {
-//		return auto;
-//	}
-//
-//	public void setAuto(Auto auto) {
-//		this.auto = auto;
-//	}
-//
-//	public Cliente getCliente() {
-//		return cliente;
-//	}
-//
-//	public void setCliente(Cliente cliente) {
-//		this.cliente = cliente;
-//	}
-//
-//	public Empleado getEmpleado() {
-//		return empleado;
-//	}
-//
-//	public void setEmpleado(Empleado empleado) {
-//		this.empleado = empleado;
-//	}
-//
-//	public List<Factura> getFacturaRenta() {
-//		return facturaRenta;
-//	}
-//
-//	public void setFacturaRenta(List<Factura> facturaRenta) {
-//		this.facturaRenta = facturaRenta;
-//	}
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
-	
+	public float getTotal() {
+		return total;
+	}
+
+	public void setTotal(float total) {
+		this.total = total;
+	}
+
+	public Automovil getAutomovil() {
+		return automovil;
+	}
+
+	public void setAutomovil(Automovil automovil) {
+		this.automovil = automovil;
+	}
+
+	public Empleado getEmpleado() {
+		return empleado;
+	}
+
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
 }

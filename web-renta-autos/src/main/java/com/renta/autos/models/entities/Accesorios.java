@@ -71,5 +71,13 @@ public class Accesorios implements Serializable{
 		return serialVersionUID;
 	}
 
+	public Automovil getAutomovil() {
+		return automovil;
+	}
+
+	public void setAutomovil(Automovil automovil) {
+		this.automovil = automovil;
+	}
+
 	
 }

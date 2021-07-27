@@ -143,5 +143,12 @@ public class Automovil implements Serializable{
 		this.mantenimiento = mantenimiento;
 	}
 
+	public List<Accesorios> getAccesorios() {
+		return accesorios;
+	}
+
+	public void setAccesorios(List<Accesorios> accesorios) {
+		this.accesorios = accesorios;
+	}
 	
 }
