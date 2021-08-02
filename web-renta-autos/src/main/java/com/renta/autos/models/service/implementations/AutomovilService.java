@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.renta.autos.models.entities.Automovil;
 import com.renta.autos.models.repositories.IAutomovil;
 import com.renta.autos.models.service.interfaces.IAutomovilService;
 
+@Service
 public class AutomovilService implements IAutomovilService{
 
 	@Autowired

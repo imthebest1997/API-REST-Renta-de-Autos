@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.renta.autos.models.entities.DetalleMantenimiento;
 import com.renta.autos.models.repositories.IDetalleMantenimiento;
 import com.renta.autos.models.service.interfaces.IDetalleMantenimientoService;
 
+@Service
 public class DetalleMantenimientoService implements IDetalleMantenimientoService{
 
 	@Autowired
