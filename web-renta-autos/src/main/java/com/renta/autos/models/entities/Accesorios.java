@@ -59,14 +59,6 @@ public class Accesorios implements Serializable{
 		this.nombre = nombre;
 	}
 
-	public Automovil getAuto() {
-		return automovil;
-	}
-
-	public void setAuto(Automovil automovil) {
-		this.automovil = automovil;
-	}
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
