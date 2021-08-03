@@ -15,22 +15,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.renta.autos.models.entities.Accesorios;
-import com.renta.autos.models.service.implementations.AccesoriosService;
+import com.renta.autos.models.entities.Renta;
+import com.renta.autos.models.service.implementations.RentaService;
 
 @RestController
-@RequestMapping("/accesorios")
-public class AccesoriosController {
+@RequestMapping("/renta")
+public class RentaController {
+
 	@Autowired
-	AccesoriosService service;
-		    
+	RentaService service;
+	
 	//CRUD - L
 	//Create
 	@PostMapping("/create")
-	public ResponseEntity<?> create(@RequestBody Accesorios accesorios) {
+	public ResponseEntity<?> create(@RequestBody Renta renta) {
 		try {
-			service.save(accesorios);
-			return ResponseEntity.status(HttpStatus.CREATED).body(accesorios);
+			service.save(renta);
+			return ResponseEntity.status(HttpStatus.CREATED).body(renta);
 		}
 		catch(Exception ex) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
@@ -41,11 +42,11 @@ public class AccesoriosController {
 	@GetMapping("/retrieve/{codigo}")
 	public ResponseEntity<?> retrieve(@PathVariable Integer codigo) {
 		try {
-			Optional<Accesorios> accesorios = service.findById(codigo);
-			if(accesorios.isEmpty()) {
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Accesorio no encontrado");
+			Optional<Renta> renta = service.findById(codigo);
+			if(renta.isEmpty()) {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Registro de renta de auto no encontrado");
 			}
-			return ResponseEntity.ok(accesorios);
+			return ResponseEntity.ok(renta);
 		}
 		catch(Exception ex) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
@@ -54,11 +55,11 @@ public class AccesoriosController {
 	
 	//Update
 	@PutMapping("/update/{codigo}")
-	public ResponseEntity<?> update(@PathVariable Integer codigo, @RequestBody Accesorios accesorios) {
+	public ResponseEntity<?> update(@PathVariable Integer codigo, @RequestBody Renta renta) {
 		try {
-			accesorios.setCodigoAccesorios(codigo);
-			service.save(accesorios); 
-			return ResponseEntity.ok(accesorios);
+			renta.setCodigoRenta(codigo);
+			service.save(renta); 
+			return ResponseEntity.ok(renta);
 		}
 		catch(Exception ex) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
@@ -68,12 +69,12 @@ public class AccesoriosController {
 	@DeleteMapping("/delete/{codigo}")
 	public ResponseEntity<?> delete(@PathVariable Integer codigo) {
 		try {
-			Optional<Accesorios> accesorios = service.findById(codigo);
-			if(accesorios.isEmpty()) {
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Accesorio no encontrado");
+			Optional<Renta> renta = service.findById(codigo);
+			if(renta.isEmpty()) {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Registro de renta de auto no encontrado");
 			}
 			service.delete(codigo);
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body(accesorios);
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(renta);
 		}
 		catch(Exception ex) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
@@ -84,11 +85,11 @@ public class AccesoriosController {
 	@GetMapping("/list")
 	public ResponseEntity<?> list() {
 		try {
-			List<Accesorios> accesorios = service.findAll();
-			if(accesorios.isEmpty()) {
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No hay accesorios registrados");
+			List<Renta> renta = service.findAll();
+			if(renta.isEmpty()) {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No hay registros de renta de autos");
 			}
-			return ResponseEntity.ok(accesorios);
+			return ResponseEntity.ok(renta);
 		}
 		catch(Exception ex) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());

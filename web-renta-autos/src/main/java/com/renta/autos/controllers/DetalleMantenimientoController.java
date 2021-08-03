@@ -15,22 +15,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.renta.autos.models.entities.Accesorios;
-import com.renta.autos.models.service.implementations.AccesoriosService;
+import com.renta.autos.models.entities.DetalleMantenimiento;
+import com.renta.autos.models.service.implementations.DetalleMantenimientoService;
 
 @RestController
-@RequestMapping("/accesorios")
-public class AccesoriosController {
+@RequestMapping("/detalle_mantenimiento")
+public class DetalleMantenimientoController {
+
 	@Autowired
-	AccesoriosService service;
-		    
+	DetalleMantenimientoService service;
 	//CRUD - L
 	//Create
 	@PostMapping("/create")
-	public ResponseEntity<?> create(@RequestBody Accesorios accesorios) {
+	public ResponseEntity<?> create(@RequestBody DetalleMantenimiento detalleMantenimiento) {
 		try {
-			service.save(accesorios);
-			return ResponseEntity.status(HttpStatus.CREATED).body(accesorios);
+			service.save(detalleMantenimiento);
+			return ResponseEntity.status(HttpStatus.CREATED).body(detalleMantenimiento);
 		}
 		catch(Exception ex) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
@@ -41,11 +41,11 @@ public class AccesoriosController {
 	@GetMapping("/retrieve/{codigo}")
 	public ResponseEntity<?> retrieve(@PathVariable Integer codigo) {
 		try {
-			Optional<Accesorios> accesorios = service.findById(codigo);
-			if(accesorios.isEmpty()) {
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Accesorio no encontrado");
+			Optional<DetalleMantenimiento> detalleMantenimiento = service.findById(codigo);
+			if(detalleMantenimiento.isEmpty()) {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Detalle de mantenimiento no encontrado");
 			}
-			return ResponseEntity.ok(accesorios);
+			return ResponseEntity.ok(detalleMantenimiento);
 		}
 		catch(Exception ex) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
@@ -54,11 +54,11 @@ public class AccesoriosController {
 	
 	//Update
 	@PutMapping("/update/{codigo}")
-	public ResponseEntity<?> update(@PathVariable Integer codigo, @RequestBody Accesorios accesorios) {
+	public ResponseEntity<?> update(@PathVariable Integer codigo, @RequestBody DetalleMantenimiento detalleMantenimiento) {
 		try {
-			accesorios.setCodigoAccesorios(codigo);
-			service.save(accesorios); 
-			return ResponseEntity.ok(accesorios);
+			detalleMantenimiento.setCodigoDetalleMantenimiento(codigo);
+			service.save(detalleMantenimiento); 
+			return ResponseEntity.ok(detalleMantenimiento);
 		}
 		catch(Exception ex) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
@@ -68,12 +68,12 @@ public class AccesoriosController {
 	@DeleteMapping("/delete/{codigo}")
 	public ResponseEntity<?> delete(@PathVariable Integer codigo) {
 		try {
-			Optional<Accesorios> accesorios = service.findById(codigo);
-			if(accesorios.isEmpty()) {
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Accesorio no encontrado");
+			Optional<DetalleMantenimiento> detalleMantenimiento = service.findById(codigo);
+			if(detalleMantenimiento.isEmpty()) {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Detalle de mantenimiento no encontrado");
 			}
 			service.delete(codigo);
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body(accesorios);
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(detalleMantenimiento);
 		}
 		catch(Exception ex) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
@@ -84,11 +84,11 @@ public class AccesoriosController {
 	@GetMapping("/list")
 	public ResponseEntity<?> list() {
 		try {
-			List<Accesorios> accesorios = service.findAll();
-			if(accesorios.isEmpty()) {
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No hay accesorios registrados");
+			List<DetalleMantenimiento> detalleMantenimientos = service.findAll();
+			if(detalleMantenimientos.isEmpty()) {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No hay detalles de mantenimientos registrados");
 			}
-			return ResponseEntity.ok(accesorios);
+			return ResponseEntity.ok(detalleMantenimientos);
 		}
 		catch(Exception ex) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());

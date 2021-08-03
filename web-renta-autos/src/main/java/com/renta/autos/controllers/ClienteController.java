@@ -15,23 +15,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.renta.autos.models.entities.Automovil;
-import com.renta.autos.models.service.implementations.AutomovilService;
+import com.renta.autos.models.entities.Cliente;
+import com.renta.autos.models.service.implementations.ClienteService;
 
 @RestController
 @RequestMapping("/cliente")
 public class ClienteController {
     //Inyectar el servicio
 	@Autowired
-	AutomovilService service;
+	ClienteService service;
 		    
 	//CRUD - L
 	//Create
 	@PostMapping("/create")
-	public ResponseEntity<?> create(@RequestBody Automovil auto) {
+	public ResponseEntity<?> create(@RequestBody Cliente cliente) {
 		try {
-			service.save(auto);
-			return ResponseEntity.status(HttpStatus.CREATED).body(auto);
+			service.save(cliente);
+			return ResponseEntity.status(HttpStatus.CREATED).body(cliente);
 		}
 		catch(Exception ex) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
@@ -42,11 +42,11 @@ public class ClienteController {
 	@GetMapping("/retrieve/{codigo}")
 	public ResponseEntity<?> retrieve(@PathVariable Integer codigo) {
 		try {
-			Optional<Automovil> auto = service.findById(codigo);
-			if(auto.isEmpty()) {
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Auto no encontrado");
+			Optional<Cliente> cliente = service.findById(codigo);
+			if(cliente.isEmpty()) {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente no encontrado");
 			}
-			return ResponseEntity.ok(auto);
+			return ResponseEntity.ok(cliente);
 		}
 		catch(Exception ex) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
@@ -55,11 +55,11 @@ public class ClienteController {
 	
 	//Update
 	@PutMapping("/update/{codigo}")
-	public ResponseEntity<?> update(@PathVariable Integer codigo, @RequestBody Automovil auto) {
+	public ResponseEntity<?> update(@PathVariable Integer codigo, @RequestBody Cliente cliente) {
 		try {
-			auto.setCodigoAuto(codigo);
-			service.save(auto); 
-			return ResponseEntity.ok(auto);
+			cliente.setCodigoCliente(codigo);
+			service.save(cliente); 
+			return ResponseEntity.ok(cliente);
 		}
 		catch(Exception ex) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
@@ -69,12 +69,12 @@ public class ClienteController {
 	@DeleteMapping("/delete/{codigo}")
 	public ResponseEntity<?> delete(@PathVariable Integer codigo) {
 		try {
-			Optional<Automovil> auto = service.findById(codigo);
-			if(auto.isEmpty()) {
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Auto no encontrado");
+			Optional<Cliente> cliente = service.findById(codigo);
+			if(cliente.isEmpty()) {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente no encontrado");
 			}
 			service.delete(codigo);
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body(auto);
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(cliente);
 		}
 		catch(Exception ex) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
@@ -85,11 +85,11 @@ public class ClienteController {
 	@GetMapping("/list")
 	public ResponseEntity<?> list() {
 		try {
-			List<Automovil> autos = service.findAll();
-			if(autos.isEmpty()) {
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No hay autos registrados");
+			List<Cliente> clientes = service.findAll();
+			if(clientes.isEmpty()) {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No hay clientes registrados");
 			}
-			return ResponseEntity.ok(autos);
+			return ResponseEntity.ok(clientes);
 		}
 		catch(Exception ex) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
