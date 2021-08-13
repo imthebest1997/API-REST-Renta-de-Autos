@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.renta.autos.models.entities.Renta;
-import com.renta.autos.models.service.implementations.RentaService;
+import com.renta.autos.models.service.interfaces.IRentaService;
 
 @RestController
 @RequestMapping("/renta")
 public class RentaController {
 
 	@Autowired
-	RentaService service;
+	IRentaService service;
 	
 	//CRUD - L
 	//Create

@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.renta.autos.models.entities.Empleado;
-import com.renta.autos.models.service.implementations.EmpleadoService;
+import com.renta.autos.models.service.interfaces.IEmpleadoService;
 
 @RestController
 @RequestMapping("/empleado")
 public class EmpleadoController {
 	@Autowired
-	EmpleadoService service;
+	IEmpleadoService service;
 
 	//CRUD - L
 	//Create

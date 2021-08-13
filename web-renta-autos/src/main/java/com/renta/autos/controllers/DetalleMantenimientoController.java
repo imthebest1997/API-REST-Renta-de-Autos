@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.renta.autos.models.entities.DetalleMantenimiento;
-import com.renta.autos.models.service.implementations.DetalleMantenimientoService;
+import com.renta.autos.models.service.interfaces.IDetalleMantenimientoService;
 
 @RestController
 @RequestMapping("/detalle_mantenimiento")
 public class DetalleMantenimientoController {
 
 	@Autowired
-	DetalleMantenimientoService service;
+	IDetalleMantenimientoService service;
 	//CRUD - L
 	//Create
 	@PostMapping("/create")

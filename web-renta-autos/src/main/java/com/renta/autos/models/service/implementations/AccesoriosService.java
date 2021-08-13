@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.renta.autos.models.entities.Accesorios;
 import com.renta.autos.models.repositories.IAccesorios;
@@ -17,21 +18,25 @@ public class AccesoriosService implements IAccesoriosService{
 	IAccesorios repository;//,<= DAO Data Access Object
 	
 	@Override
+	@Transactional
 	public void save(Accesorios accesorios) {
 		repository.save(accesorios);
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Optional<Accesorios> findById(Integer id) {
 		return repository.findById(id);
 	}
 
 	@Override
+	@Transactional
 	public void delete(Integer id) {
 		repository.deleteById(id);
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Accesorios> findAll() {
 		return (List<Accesorios>) repository.findAll();
 	}

@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.renta.autos.models.entities.Accesorios;
-import com.renta.autos.models.service.implementations.AccesoriosService;
+import com.renta.autos.models.service.interfaces.IAccesoriosService;
 
 @RestController
 @RequestMapping("/accesorios")
 public class AccesoriosController {
 	@Autowired
-	AccesoriosService service;
+	IAccesoriosService service;
 		    
 	//CRUD - L
 	//Create

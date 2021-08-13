@@ -3,7 +3,7 @@ package com.renta.autos.controllers;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.renta.autos.models.entities.Automovil;
-import com.renta.autos.models.service.implementations.AutomovilService;
+import com.renta.autos.models.service.interfaces.IAutomovilService;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AutomovilController{
     //Inyectar el servicio
 	@Autowired
-	AutomovilService service;
+	IAutomovilService service;
 		    
 	//CRUD - L
 	//Create
