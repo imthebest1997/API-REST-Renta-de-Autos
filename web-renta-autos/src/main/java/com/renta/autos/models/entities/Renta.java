@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -39,12 +40,17 @@ public class Renta implements Serializable{
 	@Column(name = "total_ren")
 	private float total;
 	
+//	@JoinColumn(name= "fk_automovil",referencedColumnName = "codigo_aut") // Se mapea con una clave foranea
+//	@ManyToOne
+//	private Automovil automovil;
+
 	@JoinColumn(name = "codigo_aut", nullable = false)
 	@OneToOne(fetch = FetchType.LAZY)        
 	private Automovil automovil;
 
-	@JoinColumn(name = "codigo_emp", nullable = false)
-	@OneToOne(fetch = FetchType.LAZY)        
+	
+	@JoinColumn(name= "fk_empleado",referencedColumnName = "codigo_emp") // Se mapea con una clave foranea
+	@ManyToOne
 	private Empleado empleado;
 	
 	@JoinColumn(name = "codigo_cli", nullable = false)

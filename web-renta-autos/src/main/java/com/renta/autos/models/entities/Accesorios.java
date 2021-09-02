@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "accesorios")
 public class Accesorios implements Serializable{
@@ -29,6 +31,7 @@ public class Accesorios implements Serializable{
 	@Column(name = "nombre_acc")
 	private String nombre;
 	
+	@JsonIgnore
 	@JoinColumn(name= "fk_auto_accesorios",referencedColumnName = "codigo_aut") // Se mapea con una clave foranea
 	@ManyToOne
 	private Automovil automovil;

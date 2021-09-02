@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "automovil")
@@ -30,7 +32,7 @@ public class Automovil implements Serializable{
 	private boolean disponibilidad;
 	
 	@Column(name = "tipo_auto_aut")
-	private String auto;
+	private String tipoAuto;
 
 	@Column(name = "numero_placa_aut")
 	private String numeroPlaca;
@@ -45,9 +47,8 @@ public class Automovil implements Serializable{
 	private List<Mantenimiento> mantenimiento;
 
 	@OneToMany(mappedBy = "automovil", fetch = FetchType.LAZY)
-	private List<Accesorios> accesorios;
+	private List<Accesorios> listaAccesorios;
 
-	
 	public Automovil(Integer codigoAutomovil) {
 		super();
 		this.codigoAutomovil = codigoAutomovil;
@@ -73,12 +74,13 @@ public class Automovil implements Serializable{
 		this.disponibilidad = disponibilidad;
 	}
 
-	public String getAuto() {
-		return auto;
+
+	public String getTipoAuto() {
+		return tipoAuto;
 	}
 
-	public void setAuto(String auto) {
-		this.auto = auto;
+	public void setTipoAuto(String tipoAuto) {
+		this.tipoAuto = tipoAuto;
 	}
 
 	public String getNumPlaca() {
@@ -121,10 +123,6 @@ public class Automovil implements Serializable{
 		this.numeroPlaca = numeroPlaca;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	public Integer getCodigoAutomovil() {
 		return codigoAutomovil;
 	}
@@ -141,12 +139,12 @@ public class Automovil implements Serializable{
 		this.mantenimiento = mantenimiento;
 	}
 
-	public List<Accesorios> getAccesorios() {
-		return accesorios;
+	public List<Accesorios> getListaAccesorios() {
+		return listaAccesorios;
 	}
 
-	public void setAccesorios(List<Accesorios> accesorios) {
-		this.accesorios = accesorios;
+	public void setListaAccesorios(List<Accesorios> listaAccesorios) {
+		this.listaAccesorios = listaAccesorios;
 	}
 	
 }

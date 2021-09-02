@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.renta.autos.models.entities.Accesorios;
 import com.renta.autos.models.entities.Automovil;
+import com.renta.autos.models.repositories.IAccesorios;
 import com.renta.autos.models.repositories.IAutomovil;
 import com.renta.autos.models.service.interfaces.IAutomovilService;
 
@@ -16,11 +18,19 @@ public class AutomovilService implements IAutomovilService{
 
 	@Autowired
 	IAutomovil repository;
-
+	
+	@Autowired
+	IAccesorios repositoryAccesorios;
+	
 	@Override
 	@Transactional
 	public void save(Automovil automovil) {
-		repository.save(automovil);		
+		repository.save(automovil);
+		
+		for(Accesorios a : automovil.getListaAccesorios()) {
+			a.setAutomovil(automovil);
+			repositoryAccesorios.save(a);			
+		}
 	}
 
 	@Override

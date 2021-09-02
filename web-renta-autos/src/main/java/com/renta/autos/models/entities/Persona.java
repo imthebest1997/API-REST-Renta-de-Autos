@@ -22,8 +22,8 @@ public abstract class Persona implements Serializable{
 	@Column(name = "telefono")	
 	private String telefono;
 	
-	@Column(name = "direccion")	
-	private String direccion;
+	@Column(name = "celular")	
+	private String celular;
 	
 	@Column(name = "correoElectronico")	
 	private String correoElectronico;
@@ -52,14 +52,6 @@ public abstract class Persona implements Serializable{
 		this.telefono = telefono;
 	}
 
-	public String getDireccion() {
-		return direccion;
-	}
-
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
-	}
-
 	public String getCorreoElectronico() {
 		return correoElectronico;
 	}
@@ -68,10 +60,12 @@ public abstract class Persona implements Serializable{
 		this.correoElectronico = correoElectronico;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public String getCelular() {
+		return celular;
 	}
-	
-	
-	
+
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
+
 }

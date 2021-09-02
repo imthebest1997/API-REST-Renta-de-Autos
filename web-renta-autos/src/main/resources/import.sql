@@ -11,25 +11,25 @@ INSERT INTO `automovil`(`tipo_auto_aut`, `color_aut`, `disponibilidad_aut`, `mar
 INSERT INTO `automovil`(`tipo_auto_aut`, `color_aut`, `disponibilidad_aut`, `marca_aut`, `numero_placa_aut`) VALUES ("4x4","Gray",1,"Toyota Rush","SCA-1564");
 
 --- Cliente
-INSERT INTO `cliente`( `cedula`, `correo_electronico`, `direccion`, `nombre`, `telefono`, `numero_licencia_cli`) VALUES ("1494080687","wts@gmail.com","Ambato","Washignton Fiallos","032454664","LIC-065465464");
-INSERT INTO `cliente`( `cedula`, `correo_electronico`, `direccion`, `nombre`, `telefono`, `numero_licencia_cli`) VALUES ("1146925382","lds@gmail.com","Latacunga","Andres Lara","032521460","LIC-049654046");
-INSERT INTO `cliente`( `cedula`, `correo_electronico`, `direccion`, `nombre`, `telefono`, `numero_licencia_cli`) VALUES ("1494080687","chs@gmail.com","Quito","Arely Lara","032400621","LIC-123446541");
-INSERT INTO `cliente`( `cedula`, `correo_electronico`, `direccion`, `nombre`, `telefono`, `numero_licencia_cli`) VALUES ("1112451228","csqto@gmail.com","El Oro","Galo Ramirez","032131244","LIC-465345464");
-INSERT INTO `cliente`( `cedula`, `correo_electronico`, `direccion`, `nombre`, `telefono`, `numero_licencia_cli`) VALUES ("1811720552","cnto@gmail.com","Guayaquil","Fernando Gonzalez","032001746","LIC-067465264");
-INSERT INTO `cliente`( `cedula`, `correo_electronico`, `direccion`, `nombre`, `telefono`, `numero_licencia_cli`) VALUES ("1791625037","roberto1234@gmail.com","Ambato","Roberto Suarez","032504160","LIC-964554464");
-INSERT INTO `cliente`( `cedula`, `correo_electronico`, `direccion`, `nombre`, `telefono`, `numero_licencia_cli`) VALUES ("1378923171","luciaS@gmail.com","Latacunga","Lucia Berlin","032650012","LIC-031256546");
-INSERT INTO `cliente`( `cedula`, `correo_electronico`, `direccion`, `nombre`, `telefono`, `numero_licencia_cli`) VALUES ("1157701694","lcilaS@gmail.com","Quito","Lucila Geria","032461564","LIC-125405064");
-INSERT INTO `cliente`( `cedula`, `correo_electronico`, `direccion`, `nombre`, `telefono`, `numero_licencia_cli`) VALUES ("1416077750","chispas@gmail.com","Machala","Juan Rueda","032131200","LIC-500032126");
-INSERT INTO `cliente`( `cedula`, `correo_electronico`, `direccion`, `nombre`, `telefono`, `numero_licencia_cli`) VALUES ("0730584619","ariana-g@gmail.com","Cuenca","Ariana Bustamante","032522220","LIC-600234455");
+INSERT INTO `cliente`(`cedula`, `celular`, `correo_electronico`, `nombre`, `telefono`, `numero_licencia_cli`) VALUES ("1494080687","0955344434","wts@gmail.com","Washignton Fiallos","032454664","LIC-065465464");
+INSERT INTO `cliente`(`cedula`, `celular`, `correo_electronico`, `nombre`, `telefono`, `numero_licencia_cli`) VALUES ("1146925382","0912334754","lds@gmail.com","Andres Lara","032521460","LIC-049654046");
+INSERT INTO `cliente`(`cedula`, `celular`, `correo_electronico`, `nombre`, `telefono`, `numero_licencia_cli`) VALUES ("1494080687","0934646464","chs@gmail.com","Arely Lara","032400621","LIC-123446541");
+INSERT INTO `cliente`(`cedula`, `celular`, `correo_electronico`, `nombre`, `telefono`, `numero_licencia_cli`) VALUES ("1112451228","0950032469","csqto@gmail.com","Galo Ramirez","032131244","LIC-465345464");
+INSERT INTO `cliente`(`cedula`, `celular`, `correo_electronico`, `nombre`, `telefono`, `numero_licencia_cli`) VALUES ("1811720552","0978946546","cnto@gmail.com","Fernando Gonzalez","032001746","LIC-067465264");
+INSERT INTO `cliente`(`cedula`, `celular`, `correo_electronico`, `nombre`, `telefono`, `numero_licencia_cli`) VALUES ("1791625037","0923444643","roberto1234@gmail.com","Roberto Suarez","032504160","LIC-964554464");
+INSERT INTO `cliente`(`cedula`, `celular`, `correo_electronico`, `nombre`, `telefono`, `numero_licencia_cli`) VALUES ("1378923171","0945646464","luciaS@gmail.com","Lucia Berlin","032650012","LIC-031256546");
+INSERT INTO `cliente`(`cedula`, `celular`, `correo_electronico`, `nombre`, `telefono`, `numero_licencia_cli`) VALUES ("1157701694","0975123132","lcilaS@gmail.com","Lucila Geria","032461564","LIC-125405064");
+INSERT INTO `cliente`(`cedula`, `celular`, `correo_electronico`, `nombre`, `telefono`, `numero_licencia_cli`) VALUES ("1416077750","0919789460","chispas@gmail.com","Juan Rueda","032131200","LIC-500032126");
+INSERT INTO `cliente`(`cedula`, `celular`, `correo_electronico`, `nombre`, `telefono`, `numero_licencia_cli`) VALUES ("0730584619","0904564654","ariana-g@gmail.com","Ariana Bustamante","032522220","LIC-600234455");
 
 --- Empleado
-INSERT INTO `empleado`(`cedula`, `correo_electronico`, `direccion`, `nombre`, `telefono`, `numero_autos_rentados_emp`) VALUES ("1802126454","alexanderp@gmail.com","Ambato","Alexander Paredes","032521640",0);
-INSERT INTO `empleado`(`cedula`, `correo_electronico`, `direccion`, `nombre`, `telefono`, `numero_autos_rentados_emp`) VALUES ("1805147566","darcimac@gmail.com","Ambato","Darci Macfarlane","032363927",0);
-INSERT INTO `empleado`(`cedula`, `correo_electronico`, `direccion`, `nombre`, `telefono`, `numero_autos_rentados_emp`) VALUES ("1808168668","rgeria@gmail.com","Ambato","Raul Geria","032789541",0);
-INSERT INTO `empleado`(`cedula`, `correo_electronico`, `direccion`, `nombre`, `telefono`, `numero_autos_rentados_emp`) VALUES ("1811189770","george-2019@gmail.com","Ambato","Jorge Gonzalez","037461256",0);
-INSERT INTO `empleado`(`cedula`, `correo_electronico`, `direccion`, `nombre`, `telefono`, `numero_autos_rentados_emp`) VALUES ("1814210872","carlos-aguilar@gmail.com","Ambato","Carlos Aguilar","035945464",0);
-INSERT INTO `empleado`(`cedula`, `correo_electronico`, `direccion`, `nombre`, `telefono`, `numero_autos_rentados_emp`) VALUES ("1817231974","patrick@gmail.com","Ambato","Patricio Sanchez","032646469",0);
-INSERT INTO `empleado`(`cedula`, `correo_electronico`, `direccion`, `nombre`, `telefono`, `numero_autos_rentados_emp`) VALUES ("1820253076","grld@gmail.com","Ambato","Gerald Johansen","032646471",0);
-INSERT INTO `empleado`(`cedula`, `correo_electronico`, `direccion`, `nombre`, `telefono`, `numero_autos_rentados_emp`) VALUES ("1823274178","arnld-s@gmail.com","Ambato","Arnold Swneshder","032646472",0);
-INSERT INTO `empleado`(`cedula`, `correo_electronico`, `direccion`, `nombre`, `telefono`, `numero_autos_rentados_emp`) VALUES ("1826295280","lsantamaria@gmail.com","Ambato","Liseth Santamaria","032646476",0);
-INSERT INTO `empleado`(`cedula`, `correo_electronico`, `direccion`, `nombre`, `telefono`, `numero_autos_rentados_emp`) VALUES ("1838379688","dldrsco@gmail.com","Ambato","Delta Driscoll","032617683",0);
+INSERT INTO `empleado`(`cedula`, `celular`, `correo_electronico`, `nombre`, `telefono`, `numero_autos_rentados_emp`) VALUES ("1802126454","0989856464","alexanderp@gmail.com","Alexander Paredes","032521640",10);
+INSERT INTO `empleado`(`cedula`, `celular`, `correo_electronico`, `nombre`, `telefono`, `numero_autos_rentados_emp`) VALUES ("1805147566","0998846400","darcimac@gmail.com","Darci Macfarlane","032363927",17);
+INSERT INTO `empleado`(`cedula`, `celular`, `correo_electronico`, `nombre`, `telefono`, `numero_autos_rentados_emp`) VALUES ("1808168668","0999465411","rgeria@gmail.com","Raul Geria","032789541",14);
+INSERT INTO `empleado`(`cedula`, `celular`, `correo_electronico`, `nombre`, `telefono`, `numero_autos_rentados_emp`) VALUES ("1811189770","0934596442","george-2019@gmail.com","Jorge Gonzalez","037461256",20);
+INSERT INTO `empleado`(`cedula`, `celular`, `correo_electronico`, `nombre`, `telefono`, `numero_autos_rentados_emp`) VALUES ("1814210872","0954416465","carlos-aguilar@gmail.com","Carlos Aguilar","035945464",17);
+INSERT INTO `empleado`(`cedula`, `celular`, `correo_electronico`, `nombre`, `telefono`, `numero_autos_rentados_emp`) VALUES ("1817231974","0946544646","patrick@gmail.com","Patricio Sanchez","032646469",18);
+INSERT INTO `empleado`(`cedula`, `celular`, `correo_electronico`, `nombre`, `telefono`, `numero_autos_rentados_emp`) VALUES ("1820253076","0925464474","grld@gmail.com","Gerald Johansen","032646471",15);
+INSERT INTO `empleado`(`cedula`, `celular`, `correo_electronico`, `nombre`, `telefono`, `numero_autos_rentados_emp`) VALUES ("1823274178","0956464644","arnld-s@gmail.com","Arnold Swneshder","032646472",19);
+INSERT INTO `empleado`(`cedula`, `celular`, `correo_electronico`, `nombre`, `telefono`, `numero_autos_rentados_emp`) VALUES ("1826295280","0954271700","lsantamaria@gmail.com","Liseth Santamaria","032646476",15);
+INSERT INTO `empleado`(`cedula`, `celular`, `correo_electronico`, `nombre`, `telefono`, `numero_autos_rentados_emp`) VALUES ("1838379688","0984071125","dldrsco@gmail.com","Delta Driscoll","032617683",10);
