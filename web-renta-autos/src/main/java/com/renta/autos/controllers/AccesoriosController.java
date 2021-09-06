@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.renta.autos.models.entities.Accesorios;
 import com.renta.autos.models.service.interfaces.IAccesoriosService;
 
-@CrossOrigin(origins = "*",methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 @RestController
 @RequestMapping("/accesorios")
 public class AccesoriosController {

@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.renta.autos.models.entities.DetalleMantenimiento;
 import com.renta.autos.models.service.interfaces.IDetalleMantenimientoService;
 
-@CrossOrigin(origins = "*",methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 @RestController
 @RequestMapping("/detalle_mantenimiento")
 public class DetalleMantenimientoController {

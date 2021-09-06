@@ -16,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "mantenimiento")
@@ -41,6 +43,7 @@ public class Mantenimiento implements Serializable{
 	@OneToMany(mappedBy = "mantenimiento", fetch = FetchType.LAZY)
 	private List<DetalleMantenimiento> detalleMantenimiento;
 	
+//	@JsonIgnore
 	@JoinColumn(name= "fk_automovil",referencedColumnName = "codigo_aut") // Se mapea con una clave foranea
 	@ManyToOne
 	private Automovil automovil;
@@ -90,7 +93,8 @@ public class Mantenimiento implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
+	
+//	@JsonIgnore
 	public Automovil getAutomovil() {
 		return automovil;
 	}

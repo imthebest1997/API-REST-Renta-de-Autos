@@ -44,7 +44,7 @@ public class Automovil implements Serializable{
 	private String color;
 
 	@OneToMany(mappedBy = "automovil", fetch = FetchType.LAZY)
-	private List<Mantenimiento> mantenimiento;
+	private List<Mantenimiento> listaMantenimientos;
 
 	@OneToMany(mappedBy = "automovil", fetch = FetchType.LAZY)
 	private List<Accesorios> listaAccesorios;
@@ -56,14 +56,6 @@ public class Automovil implements Serializable{
 	
 	public Automovil() {
 		super();
-	}
-
-	public Integer getCodigoAuto() {
-		return codigoAutomovil;
-	}
-
-	public void setCodigoAuto(Integer codigoAuto) {
-		this.codigoAutomovil = codigoAuto;
 	}
 
 	public boolean isDisponible() {
@@ -81,14 +73,6 @@ public class Automovil implements Serializable{
 
 	public void setTipoAuto(String tipoAuto) {
 		this.tipoAuto = tipoAuto;
-	}
-
-	public String getNumPlaca() {
-		return numeroPlaca;
-	}
-
-	public void setNumPlaca(String numPlaca) {
-		this.numeroPlaca = numPlaca;
 	}
 
 	public String getMarca() {
@@ -132,11 +116,11 @@ public class Automovil implements Serializable{
 	}
 
 	public List<Mantenimiento> getMantenimiento() {
-		return mantenimiento;
+		return listaMantenimientos;
 	}
 
-	public void setMantenimiento(List<Mantenimiento> mantenimiento) {
-		this.mantenimiento = mantenimiento;
+	public void setMantenimiento(List<Mantenimiento> listaMantenimientos) {
+		this.listaMantenimientos = listaMantenimientos;
 	}
 
 	public List<Accesorios> getListaAccesorios() {

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@CrossOrigin(origins = "*",methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 @RestController
 @RequestMapping("/automovil")
 public class AutomovilController{
@@ -61,7 +61,7 @@ public class AutomovilController{
 	@PutMapping("/update/{codigo}")
 	public ResponseEntity<?> update(@PathVariable Integer codigo, @RequestBody Automovil auto) {
 		try {
-			auto.setCodigoAuto(codigo);
+			auto.setCodigoAutomovil(codigo);
 			service.save(auto); 
 			return ResponseEntity.ok(auto);
 		}
@@ -78,7 +78,7 @@ public class AutomovilController{
 				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Auto no encontrado");
 			}
 			service.delete(codigo);
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body(auto);
+			return ResponseEntity.ok(auto);
 		}
 		catch(Exception ex) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
@@ -90,6 +90,21 @@ public class AutomovilController{
 	public ResponseEntity<?> list() {
 		try {
 			List<Automovil> autos = service.findAll();
+			if(autos.isEmpty()) {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No hay autos registrados");
+			}
+			return ResponseEntity.ok(autos);
+		}
+		catch(Exception ex) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
+		}		
+	}
+
+
+	@GetMapping("/list/{disponibilidad}")
+	public ResponseEntity<?> listDisponibilidad(@PathVariable boolean disponibilidad) {
+		try {
+			List<Automovil> autos = service.findByDisponibilidad(disponibilidad);
 			if(autos.isEmpty()) {
 				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No hay autos registrados");
 			}

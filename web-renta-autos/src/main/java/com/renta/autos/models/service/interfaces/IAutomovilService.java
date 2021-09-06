@@ -10,4 +10,5 @@ public interface IAutomovilService {
 	public Optional<Automovil> findById(Integer codigo); //Consultar -> Retrieve
 	public void delete(Integer codigo); //Borrar -> Delete
 	public List<Automovil> findAll(); // Consultar en conjunto -> List
+	public List<Automovil> findByDisponibilidad(boolean disponibilidad);
 }
