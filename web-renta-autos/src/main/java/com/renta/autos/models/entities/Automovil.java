@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "automovil")
 public class Automovil implements Serializable{
@@ -43,6 +45,7 @@ public class Automovil implements Serializable{
 	@Column(name = "precio_dia_aut")
 	private float precioPorDia;
 	
+	@JsonManagedReference
 	@OneToMany(mappedBy = "automovil", fetch = FetchType.LAZY)
 	private List<Mantenimiento> listaMantenimientos;
 

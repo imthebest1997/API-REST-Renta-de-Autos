@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "renta")
 public class Renta implements Serializable{
@@ -40,6 +42,7 @@ public class Renta implements Serializable{
 
 	@JoinColumn(name = "codigo_aut", nullable = false)
 	@OneToOne(fetch = FetchType.LAZY)        
+//	@JsonIgnore
 	private Automovil automovil;
 
 	
@@ -49,6 +52,7 @@ public class Renta implements Serializable{
 	
 	@JoinColumn(name = "codigo_cli", nullable = false)
 	@OneToOne(fetch = FetchType.LAZY)        
+//	@JsonIgnore
 	private Cliente cliente;
 	
 	public Renta(Integer codigoRenta) {
@@ -76,16 +80,13 @@ public class Renta implements Serializable{
 		this.inicio = inicio;
 	}
 
+
 	public Calendar getFin() {
 		return fin;
 	}
 
 	public void setFin(Calendar fin) {
 		this.fin = fin;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 	public float getTotal() {

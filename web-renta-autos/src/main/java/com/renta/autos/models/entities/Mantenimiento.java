@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -40,14 +41,15 @@ public class Mantenimiento implements Serializable{
 	private Calendar fechaFin;
 
 	//mappedBy va el nombre del atributo de esta clase en la clase asociada
-
+	
 	@OneToMany(mappedBy = "mantenimiento", fetch = FetchType.LAZY)
 //	@JsonIgnore
 	private List<DetalleMantenimiento> detalleMantenimiento;
 	
-
+	
 	@JoinColumn(name= "fk_automovil",referencedColumnName = "codigo_aut") // Se mapea con una clave foranea
 //	@JsonIgnore
+	@JsonBackReference
 	@ManyToOne
 	private Automovil automovil;
 	
@@ -101,6 +103,4 @@ public class Mantenimiento implements Serializable{
 	public void setAutomovil(Automovil automovil) {
 		this.automovil = automovil;
 	}	
-
-	
 }
