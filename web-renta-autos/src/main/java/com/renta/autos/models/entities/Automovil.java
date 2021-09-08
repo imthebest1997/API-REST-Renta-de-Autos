@@ -13,9 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
 @Entity
 @Table(name = "automovil")
 public class Automovil implements Serializable{
@@ -43,6 +40,9 @@ public class Automovil implements Serializable{
 	@Column(name = "color_aut")
 	private String color;
 
+	@Column(name = "precio_dia_aut")
+	private float precioPorDia;
+	
 	@OneToMany(mappedBy = "automovil", fetch = FetchType.LAZY)
 	private List<Mantenimiento> listaMantenimientos;
 
@@ -130,5 +130,23 @@ public class Automovil implements Serializable{
 	public void setListaAccesorios(List<Accesorios> listaAccesorios) {
 		this.listaAccesorios = listaAccesorios;
 	}
+
+	public float getPrecioPorDia() {
+		return precioPorDia;
+	}
+
+	public void setPrecioPorDia(float precioPorDia) {
+		this.precioPorDia = precioPorDia;
+	}
+
+	public List<Mantenimiento> getListaMantenimientos() {
+		return listaMantenimientos;
+	}
+
+	public void setListaMantenimientos(List<Mantenimiento> listaMantenimientos) {
+		this.listaMantenimientos = listaMantenimientos;
+	}
+
+	
 	
 }

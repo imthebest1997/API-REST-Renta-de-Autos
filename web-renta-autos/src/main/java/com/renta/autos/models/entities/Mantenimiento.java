@@ -40,14 +40,16 @@ public class Mantenimiento implements Serializable{
 	private Calendar fechaFin;
 
 	//mappedBy va el nombre del atributo de esta clase en la clase asociada
+
 	@OneToMany(mappedBy = "mantenimiento", fetch = FetchType.LAZY)
+//	@JsonIgnore
 	private List<DetalleMantenimiento> detalleMantenimiento;
 	
-//	@JsonIgnore
+
 	@JoinColumn(name= "fk_automovil",referencedColumnName = "codigo_aut") // Se mapea con una clave foranea
+//	@JsonIgnore
 	@ManyToOne
 	private Automovil automovil;
-
 	
 	public Mantenimiento(Integer codigoMantenimiento) {
 		super();
@@ -82,16 +84,13 @@ public class Mantenimiento implements Serializable{
 		this.fechaFin = fechaFin;
 	}
 
+//	@JsonIgnore
 	public List<DetalleMantenimiento> getDetalleMantenimiento() {
 		return detalleMantenimiento;
 	}
 
 	public void setDetalleMantenimiento(List<DetalleMantenimiento> detalleMantenimiento) {
 		this.detalleMantenimiento = detalleMantenimiento;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 	
 //	@JsonIgnore

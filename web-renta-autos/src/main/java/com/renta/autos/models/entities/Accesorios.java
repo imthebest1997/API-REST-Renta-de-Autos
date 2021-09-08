@@ -31,7 +31,7 @@ public class Accesorios implements Serializable{
 	@Column(name = "nombre_acc")
 	private String nombre;
 	
-	@JsonIgnore
+
 	@JoinColumn(name= "fk_auto_accesorios",referencedColumnName = "codigo_aut") // Se mapea con una clave foranea
 	@ManyToOne
 	private Automovil automovil;
@@ -61,10 +61,7 @@ public class Accesorios implements Serializable{
 		this.nombre = nombre;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
+	@JsonIgnore
 	public Automovil getAutomovil() {
 		return automovil;
 	}

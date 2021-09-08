@@ -34,15 +34,9 @@ public class Renta implements Serializable{
 	@Column(name = "fecha_fin_ren")
 	private Calendar fin;
 	
-	@Column(name = "metodo_pago_ren")
-	private String metodoPago;
-
 	@Column(name = "total_ren")
 	private float total;
-	
-//	@JoinColumn(name= "fk_automovil",referencedColumnName = "codigo_aut") // Se mapea con una clave foranea
-//	@ManyToOne
-//	private Automovil automovil;
+
 
 	@JoinColumn(name = "codigo_aut", nullable = false)
 	@OneToOne(fetch = FetchType.LAZY)        
@@ -88,14 +82,6 @@ public class Renta implements Serializable{
 
 	public void setFin(Calendar fin) {
 		this.fin = fin;
-	}
-
-	public String getMetodoPago() {
-		return metodoPago;
-	}
-
-	public void setMetodoPago(String metodoPago) {
-		this.metodoPago = metodoPago;
 	}
 
 	public static long getSerialversionuid() {

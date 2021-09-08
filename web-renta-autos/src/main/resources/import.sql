@@ -1,14 +1,14 @@
 --- Automoviles
-INSERT INTO `automovil`(`tipo_auto_aut`, `color_aut`, `disponibilidad_aut`, `marca_aut`, `numero_placa_aut`) VALUES ("Deportivo","Rojo",1,"Audi A3","AT-1034");
-INSERT INTO `automovil`(`tipo_auto_aut`, `color_aut`, `disponibilidad_aut`, `marca_aut`, `numero_placa_aut`) VALUES ("4X4","Azul Marino",1,"Jeep","BAB-1032");
-INSERT INTO `automovil`(`tipo_auto_aut`, `color_aut`, `disponibilidad_aut`, `marca_aut`, `numero_placa_aut`) VALUES ("Gama alta","Plata",1,"BMW Serie 7","CAC-0795");
-INSERT INTO `automovil`(`tipo_auto_aut`, `color_aut`, `disponibilidad_aut`, `marca_aut`, `numero_placa_aut`) VALUES ("Gama alta","Beige",1,"Maserati Quattroporte","DAA-1149");
-INSERT INTO `automovil`(`tipo_auto_aut`, `color_aut`, `disponibilidad_aut`, `marca_aut`, `numero_placa_aut`) VALUES ("Gama baja","Negro",1,"Chevrolet Cruze","EDE-1003");
-INSERT INTO `automovil`(`tipo_auto_aut`, `color_aut`, `disponibilidad_aut`, `marca_aut`, `numero_placa_aut`) VALUES ("Deportivo","Rojo intenso",1,"Nissan GTR","NIE-0174");
-INSERT INTO `automovil`(`tipo_auto_aut`, `color_aut`, `disponibilidad_aut`, `marca_aut`, `numero_placa_aut`) VALUES ("Deportivo","Conche vino",1,"Bugatti Veyron","DWS-8545");
-INSERT INTO `automovil`(`tipo_auto_aut`, `color_aut`, `disponibilidad_aut`, `marca_aut`, `numero_placa_aut`) VALUES ("Deportivo","Verde agua",1,"Lamborghini Aventador Coupé","RST-1064");
-INSERT INTO `automovil`(`tipo_auto_aut`, `color_aut`, `disponibilidad_aut`, `marca_aut`, `numero_placa_aut`) VALUES ("4x4","Silver",1,"Ford Ranger","AAB-1465");
-INSERT INTO `automovil`(`tipo_auto_aut`, `color_aut`, `disponibilidad_aut`, `marca_aut`, `numero_placa_aut`) VALUES ("4x4","Gray",1,"Toyota Rush","SCA-1564");
+INSERT INTO `automovil`(`color_aut`, `disponibilidad_aut`, `marca_aut`, `numero_placa_aut`,`precio_dia_aut`,`tipo_auto_aut`) VALUES ("Rojo",1,"Audi A3","AT-1034",50.25,"Deportivo");
+INSERT INTO `automovil`(`color_aut`, `disponibilidad_aut`, `marca_aut`, `numero_placa_aut`,`precio_dia_aut`,`tipo_auto_aut`) VALUES ("Azul Marino",1,"Jeep","BAB-1032",60.50,"4X4");
+INSERT INTO `automovil`(`color_aut`, `disponibilidad_aut`, `marca_aut`, `numero_placa_aut`,`precio_dia_aut`,`tipo_auto_aut`) VALUES ("Plata",1,"BMW Serie 7","CAC-0795",75.25,"Gama alta");
+INSERT INTO `automovil`(`color_aut`, `disponibilidad_aut`, `marca_aut`, `numero_placa_aut`,`precio_dia_aut`,`tipo_auto_aut`) VALUES ("Beige",1,"Maserati Quattroporte","DAA-1149",110.25,"Gama alta");
+INSERT INTO `automovil`(`color_aut`, `disponibilidad_aut`, `marca_aut`, `numero_placa_aut`,`precio_dia_aut`,`tipo_auto_aut`) VALUES ("Negro",1,"Chevrolet Cruze","EDE-1003",69.99,"Gama baja");
+INSERT INTO `automovil`(`color_aut`, `disponibilidad_aut`, `marca_aut`, `numero_placa_aut`,`precio_dia_aut`,`tipo_auto_aut`) VALUES ("Rojo intenso",1,"Nissan GTR","NIE-0174",85.00,"Deportivo");
+INSERT INTO `automovil`(`color_aut`, `disponibilidad_aut`, `marca_aut`, `numero_placa_aut`,`precio_dia_aut`,`tipo_auto_aut`) VALUES ("Conche vino",1,"Bugatti Veyron","DWS-8545",100.50,"Deportivo");
+INSERT INTO `automovil`(`color_aut`, `disponibilidad_aut`, `marca_aut`, `numero_placa_aut`,`precio_dia_aut`,`tipo_auto_aut`) VALUES ("Verde agua",1,"Lamborghini Aventador Coupé","RST-1064",95.25,"Deportivo");
+INSERT INTO `automovil`(`color_aut`, `disponibilidad_aut`, `marca_aut`, `numero_placa_aut`,`precio_dia_aut`,`tipo_auto_aut`) VALUES ("Silver",1,"Ford Ranger","AAB-1465",120.50,"4x4");
+INSERT INTO `automovil`(`color_aut`, `disponibilidad_aut`, `marca_aut`, `numero_placa_aut`,`precio_dia_aut`,`tipo_auto_aut`) VALUES ("Gray",1,"Toyota Rush","SCA-1564",95.50,"4x4");
 
 --- Cliente
 INSERT INTO `cliente`(`cedula`, `celular`, `correo_electronico`, `nombre`, `telefono`, `numero_licencia_cli`) VALUES ("1494080687","0955344434","wts@gmail.com","Washignton Fiallos","032454664","LIC-065465464");
