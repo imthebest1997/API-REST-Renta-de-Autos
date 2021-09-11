@@ -44,14 +44,6 @@ public class Cliente extends Persona implements Serializable{
 		this.codigoCliente = codigoCliente;
 	}
 
-	public String getNumLicencia() {
-		return numeroLicencia;
-	}
-
-	public void setNumLicencia(String numLicencia) {
-		this.numeroLicencia = numLicencia;
-	}
-
 	public String getNumeroLicencia() {
 		return numeroLicencia;
 	}
@@ -60,9 +52,4 @@ public class Cliente extends Persona implements Serializable{
 		this.numeroLicencia = numeroLicencia;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	
 }

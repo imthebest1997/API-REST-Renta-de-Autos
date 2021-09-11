@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,7 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 @Table(name = "detalle_mantenimiento")
@@ -35,8 +37,10 @@ public class DetalleMantenimiento implements Serializable{
 	@Column(name = "descripcion_det")
 	private String descripcion;
 
-	@JsonIgnore
+	
+//	@JsonIgnore
 	@JoinColumn(name= "fk_manteniento",referencedColumnName = "codigo_man") // Se mapea con una clave foranea
+//	@ManyToOne(fetch = FetchType.LAZY)
 	@ManyToOne
 	private Mantenimiento mantenimiento;
 
@@ -73,17 +77,14 @@ public class DetalleMantenimiento implements Serializable{
 		this.descripcion = descripcion;
 	}
 
+	@JsonIgnore
 	public Mantenimiento getMantenimiento() {
 		return mantenimiento;
 	}
-
+	
+	@JsonProperty(access = Access.WRITE_ONLY)
 	public void setMantenimiento(Mantenimiento mantenimiento) {
 		this.mantenimiento = mantenimiento;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
-	
+		
 }

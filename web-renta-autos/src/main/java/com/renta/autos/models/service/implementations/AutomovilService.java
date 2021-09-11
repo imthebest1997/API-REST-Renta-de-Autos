@@ -9,9 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.renta.autos.models.entities.Accesorios;
 import com.renta.autos.models.entities.Automovil;
+import com.renta.autos.models.entities.DetalleMantenimiento;
 import com.renta.autos.models.entities.Mantenimiento;
 import com.renta.autos.models.repositories.IAccesorios;
 import com.renta.autos.models.repositories.IAutomovil;
+import com.renta.autos.models.repositories.IDetalleMantenimiento;
 import com.renta.autos.models.repositories.IMantenimiento;
 import com.renta.autos.models.service.interfaces.IAutomovilService;
 
@@ -30,8 +32,7 @@ public class AutomovilService implements IAutomovilService{
 	@Override
 	@Transactional
 	public void save(Automovil automovil) {
-		repository.save(automovil);
-		
+		repository.save(automovil);		
 		for(Accesorios a : automovil.getListaAccesorios()) {
 			a.setAutomovil(automovil);
 			repositoryAccesorios.save(a);			
@@ -53,10 +54,10 @@ public class AutomovilService implements IAutomovilService{
 			repositoryAccesorios.deleteById(accesorios.getCodigoAccesorios());
 		}
 		
-		for(Mantenimiento mantenimiento: automovil.get().getMantenimiento()) {
+		for(Mantenimiento mantenimiento: automovil.get().getListaMantenimientos()) {
 			repositoryMantenimiento.deleteById(mantenimiento.getCodigoMantenimiento());
 		}
-		
+				
 		repository.deleteById(codigo);
 	}
 

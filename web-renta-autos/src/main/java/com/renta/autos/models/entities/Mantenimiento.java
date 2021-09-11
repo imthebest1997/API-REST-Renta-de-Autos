@@ -16,9 +16,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 @Table(name = "mantenimiento")
@@ -46,11 +47,9 @@ public class Mantenimiento implements Serializable{
 //	@JsonIgnore
 	private List<DetalleMantenimiento> detalleMantenimiento;
 	
-	
 	@JoinColumn(name= "fk_automovil",referencedColumnName = "codigo_aut") // Se mapea con una clave foranea
 //	@JsonIgnore
-	@JsonBackReference
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Automovil automovil;
 	
 	public Mantenimiento(Integer codigoMantenimiento) {
@@ -86,20 +85,23 @@ public class Mantenimiento implements Serializable{
 		this.fechaFin = fechaFin;
 	}
 
-//	@JsonIgnore
+	@JsonIgnore
 	public List<DetalleMantenimiento> getDetalleMantenimiento() {
 		return detalleMantenimiento;
 	}
 
+	@JsonProperty(access = Access.WRITE_ONLY)
 	public void setDetalleMantenimiento(List<DetalleMantenimiento> detalleMantenimiento) {
 		this.detalleMantenimiento = detalleMantenimiento;
 	}
 	
-//	@JsonIgnore
+	//Si el decorador JsonIgnore es quitado, automaticamente no se visualiza los autos
+	@JsonIgnore
 	public Automovil getAutomovil() {
 		return automovil;
 	}
-
+	
+	@JsonProperty(access = Access.WRITE_ONLY)
 	public void setAutomovil(Automovil automovil) {
 		this.automovil = automovil;
 	}	

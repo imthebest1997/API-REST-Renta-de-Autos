@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,7 +34,7 @@ public class Accesorios implements Serializable{
 	
 
 	@JoinColumn(name= "fk_auto_accesorios",referencedColumnName = "codigo_aut") // Se mapea con una clave foranea
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Automovil automovil;
 	
 	public Accesorios(Integer codigoAccesorios) {

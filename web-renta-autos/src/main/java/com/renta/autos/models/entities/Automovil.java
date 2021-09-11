@@ -13,8 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 @Entity
 @Table(name = "automovil")
 public class Automovil implements Serializable{
@@ -45,7 +43,6 @@ public class Automovil implements Serializable{
 	@Column(name = "precio_dia_aut")
 	private float precioPorDia;
 	
-	@JsonManagedReference
 	@OneToMany(mappedBy = "automovil", fetch = FetchType.LAZY)
 	private List<Mantenimiento> listaMantenimientos;
 
@@ -61,14 +58,21 @@ public class Automovil implements Serializable{
 		super();
 	}
 
-	public boolean isDisponible() {
+	public Integer getCodigoAutomovil() {
+		return codigoAutomovil;
+	}
+
+	public void setCodigoAutomovil(Integer codigoAutomovil) {
+		this.codigoAutomovil = codigoAutomovil;
+	}
+
+	public boolean isDisponibilidad() {
 		return disponibilidad;
 	}
 
-	public void setDisponible(boolean disponibilidad) {
+	public void setDisponibilidad(boolean disponibilidad) {
 		this.disponibilidad = disponibilidad;
 	}
-
 
 	public String getTipoAuto() {
 		return tipoAuto;
@@ -76,6 +80,14 @@ public class Automovil implements Serializable{
 
 	public void setTipoAuto(String tipoAuto) {
 		this.tipoAuto = tipoAuto;
+	}
+
+	public String getNumeroPlaca() {
+		return numeroPlaca;
+	}
+
+	public void setNumeroPlaca(String numeroPlaca) {
+		this.numeroPlaca = numeroPlaca;
 	}
 
 	public String getMarca() {
@@ -94,46 +106,6 @@ public class Automovil implements Serializable{
 		this.color = color;
 	}
 
-	public boolean isDisponibilidad() {
-		return disponibilidad;
-	}
-
-	public void setDisponibilidad(boolean disponibilidad) {
-		this.disponibilidad = disponibilidad;
-	}
-
-	public String getNumeroPlaca() {
-		return numeroPlaca;
-	}
-
-	public void setNumeroPlaca(String numeroPlaca) {
-		this.numeroPlaca = numeroPlaca;
-	}
-
-	public Integer getCodigoAutomovil() {
-		return codigoAutomovil;
-	}
-
-	public void setCodigoAutomovil(Integer codigoAutomovil) {
-		this.codigoAutomovil = codigoAutomovil;
-	}
-
-	public List<Mantenimiento> getMantenimiento() {
-		return listaMantenimientos;
-	}
-
-	public void setMantenimiento(List<Mantenimiento> listaMantenimientos) {
-		this.listaMantenimientos = listaMantenimientos;
-	}
-
-	public List<Accesorios> getListaAccesorios() {
-		return listaAccesorios;
-	}
-
-	public void setListaAccesorios(List<Accesorios> listaAccesorios) {
-		this.listaAccesorios = listaAccesorios;
-	}
-
 	public float getPrecioPorDia() {
 		return precioPorDia;
 	}
@@ -150,6 +122,12 @@ public class Automovil implements Serializable{
 		this.listaMantenimientos = listaMantenimientos;
 	}
 
-	
+	public List<Accesorios> getListaAccesorios() {
+		return listaAccesorios;
+	}
+
+	public void setListaAccesorios(List<Accesorios> listaAccesorios) {
+		this.listaAccesorios = listaAccesorios;
+	}
 	
 }

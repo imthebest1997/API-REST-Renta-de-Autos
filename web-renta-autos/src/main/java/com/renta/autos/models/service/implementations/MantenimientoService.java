@@ -20,7 +20,6 @@ public class MantenimientoService implements IMantenimientoService{
 
 	@Autowired
 	IDetalleMantenimiento repositoryDetalleM;
-
 	
 	@Override
 	@Transactional
@@ -44,6 +43,7 @@ public class MantenimientoService implements IMantenimientoService{
 	public void delete(Integer codigo) {
 		Optional<Mantenimiento> mantenimiento = repository.findById(codigo);
 		if(mantenimiento == null) return;
+
 		for(DetalleMantenimiento detalleM : mantenimiento.get().getDetalleMantenimiento()) {
 			repositoryDetalleM.deleteById(detalleM.getCodigoDetalleMantenimiento());
 		}

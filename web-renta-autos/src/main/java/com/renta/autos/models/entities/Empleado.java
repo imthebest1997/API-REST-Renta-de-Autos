@@ -32,8 +32,6 @@ public class Empleado extends Persona implements Serializable{
 	
 	@OneToMany(mappedBy = "empleado", fetch = FetchType.LAZY)
 	private List<Renta> rentas;
-
-	
 	
 	public Empleado(Integer codigoEmpleado) {
 		super();
@@ -52,14 +50,6 @@ public class Empleado extends Persona implements Serializable{
 		this.codigoEmpleado = codigoEmpleado;
 	}
 
-	public int getNumAutosRentados() {
-		return numeroAutosRentados;
-	}
-
-	public void setNumAutosRentados(int numAutosRentados) {
-		this.numeroAutosRentados = numAutosRentados;
-	}
-
 	public int getNumeroAutosRentados() {
 		return numeroAutosRentados;
 	}
@@ -68,9 +58,12 @@ public class Empleado extends Persona implements Serializable{
 		this.numeroAutosRentados = numeroAutosRentados;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}	
-	
+	public List<Renta> getRentas() {
+		return rentas;
+	}
+
+	public void setRentas(List<Renta> rentas) {
+		this.rentas = rentas;
+	}
 	
 }
