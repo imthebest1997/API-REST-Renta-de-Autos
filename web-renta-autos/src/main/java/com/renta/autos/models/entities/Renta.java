@@ -46,8 +46,10 @@ public class Renta implements Serializable{
 	private Automovil automovil;
 
 	
-	@JoinColumn(name= "fk_empleado",referencedColumnName = "codigo_emp") // Se mapea con una clave foranea
-	@ManyToOne
+//	@JoinColumn(name= "fk_empleado",referencedColumnName = "codigo_emp") // Se mapea con una clave foranea
+//	@ManyToOne
+	@JoinColumn(name = "codigo_emp", nullable = false)
+	@OneToOne(fetch = FetchType.LAZY)        
 	private Empleado empleado;
 	
 	@JoinColumn(name = "codigo_cli", nullable = false)

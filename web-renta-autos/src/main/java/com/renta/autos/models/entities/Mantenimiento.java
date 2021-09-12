@@ -44,7 +44,6 @@ public class Mantenimiento implements Serializable{
 	//mappedBy va el nombre del atributo de esta clase en la clase asociada
 	
 	@OneToMany(mappedBy = "mantenimiento", fetch = FetchType.LAZY)
-//	@JsonIgnore
 	private List<DetalleMantenimiento> detalleMantenimiento;
 	
 	@JoinColumn(name= "fk_automovil",referencedColumnName = "codigo_aut") // Se mapea con una clave foranea
@@ -85,12 +84,12 @@ public class Mantenimiento implements Serializable{
 		this.fechaFin = fechaFin;
 	}
 
-	@JsonIgnore
+
 	public List<DetalleMantenimiento> getDetalleMantenimiento() {
 		return detalleMantenimiento;
 	}
 
-	@JsonProperty(access = Access.WRITE_ONLY)
+
 	public void setDetalleMantenimiento(List<DetalleMantenimiento> detalleMantenimiento) {
 		this.detalleMantenimiento = detalleMantenimiento;
 	}
