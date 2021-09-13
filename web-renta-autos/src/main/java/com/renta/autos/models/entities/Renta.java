@@ -11,10 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 @Table(name = "renta")
@@ -31,30 +32,24 @@ public class Renta implements Serializable{
 	private Integer codigoRenta;//Atributo que se mapea con la Primary Key
 
 	@Column(name = "fecha_inicio_ren")
-	private Calendar inicio;
+	private Calendar fechaInicio;
 	
 	@Column(name = "fecha_fin_ren")
-	private Calendar fin;
+	private Calendar fechaFin;
 	
 	@Column(name = "total_ren")
 	private float total;
 
-
-	@JoinColumn(name = "codigo_aut", nullable = false)
-	@OneToOne(fetch = FetchType.LAZY)        
-//	@JsonIgnore
+	@JoinColumn(name= "fk_automovil_renta",referencedColumnName = "codigo_aut")
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Automovil automovil;
 
-	
-//	@JoinColumn(name= "fk_empleado",referencedColumnName = "codigo_emp") // Se mapea con una clave foranea
-//	@ManyToOne
-	@JoinColumn(name = "codigo_emp", nullable = false)
-	@OneToOne(fetch = FetchType.LAZY)        
+	@JoinColumn(name= "fk_empleado_renta",referencedColumnName = "codigo_emp") // Se mapea con una clave foranea
+	@ManyToOne(fetch = FetchType.LAZY)	
 	private Empleado empleado;
 	
-	@JoinColumn(name = "codigo_cli", nullable = false)
-	@OneToOne(fetch = FetchType.LAZY)        
-//	@JsonIgnore
+	@JoinColumn(name= "fk_cliente_renta",referencedColumnName = "codigo_cli") // Se mapea con una clave foranea
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Cliente cliente;
 	
 	public Renta(Integer codigoRenta) {
@@ -74,21 +69,21 @@ public class Renta implements Serializable{
 		this.codigoRenta = codigoRenta;
 	}
 
-	public Calendar getInicio() {
-		return inicio;
+
+	public Calendar getFechaInicio() {
+		return fechaInicio;
 	}
 
-	public void setInicio(Calendar inicio) {
-		this.inicio = inicio;
+	public void setFechaInicio(Calendar fechaInicio) {
+		this.fechaInicio = fechaInicio;
 	}
 
-
-	public Calendar getFin() {
-		return fin;
+	public Calendar getFechaFin() {
+		return fechaFin;
 	}
 
-	public void setFin(Calendar fin) {
-		this.fin = fin;
+	public void setFechaFin(Calendar fechaFin) {
+		this.fechaFin = fechaFin;
 	}
 
 	public float getTotal() {
@@ -98,27 +93,33 @@ public class Renta implements Serializable{
 	public void setTotal(float total) {
 		this.total = total;
 	}
-
+	
+	@JsonIgnore
 	public Automovil getAutomovil() {
 		return automovil;
 	}
-
+	
+	@JsonProperty(access = Access.WRITE_ONLY)
 	public void setAutomovil(Automovil automovil) {
 		this.automovil = automovil;
 	}
-
+	
+	@JsonIgnore
 	public Empleado getEmpleado() {
 		return empleado;
 	}
-
+	
+	@JsonProperty(access = Access.WRITE_ONLY)
 	public void setEmpleado(Empleado empleado) {
 		this.empleado = empleado;
 	}
-
+	
+	@JsonIgnore
 	public Cliente getCliente() {
 		return cliente;
 	}
-
+	
+	@JsonProperty(access = Access.WRITE_ONLY)
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}

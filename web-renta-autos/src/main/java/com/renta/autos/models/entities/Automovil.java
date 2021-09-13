@@ -49,6 +49,9 @@ public class Automovil implements Serializable{
 	@OneToMany(mappedBy = "automovil", fetch = FetchType.LAZY)
 	private List<Accesorios> listaAccesorios;
 
+	@OneToMany(mappedBy = "automovil", fetch = FetchType.LAZY)
+	private List<Renta> listaRenta;
+		
 	public Automovil(Integer codigoAutomovil) {
 		super();
 		this.codigoAutomovil = codigoAutomovil;
@@ -129,5 +132,14 @@ public class Automovil implements Serializable{
 	public void setListaAccesorios(List<Accesorios> listaAccesorios) {
 		this.listaAccesorios = listaAccesorios;
 	}
+
+	public List<Renta> getListaRenta() {
+		return listaRenta;
+	}
+
+	public void setListaRenta(List<Renta> listaRenta) {
+		this.listaRenta = listaRenta;
+	}
+
 	
 }

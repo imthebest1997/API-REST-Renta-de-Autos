@@ -30,8 +30,8 @@ public class Empleado extends Persona implements Serializable{
 	@Column(name = "numero_autos_rentados_emp")
 	private int numeroAutosRentados;
 	
-//	@OneToMany(mappedBy = "empleado", fetch = FetchType.LAZY)
-//	private List<Renta> rentas;
+	@OneToMany(mappedBy = "empleado", fetch = FetchType.LAZY)
+	private List<Renta> rentas;
 	
 	public Empleado(Integer codigoEmpleado) {
 		super();
@@ -58,12 +58,12 @@ public class Empleado extends Persona implements Serializable{
 		this.numeroAutosRentados = numeroAutosRentados;
 	}
 
-//	public List<Renta> getRentas() {
-//		return rentas;
-//	}
+	public List<Renta> getRentas() {
+		return rentas;
+	}
 
-//	public void setRentas(List<Renta> rentas) {
-//		this.rentas = rentas;
-//	}
+	public void setRentas(List<Renta> rentas) {
+		this.rentas = rentas;
+	}
 	
 }

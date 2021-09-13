@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.renta.autos.models.entities.Empleado;
+import com.renta.autos.models.entities.Renta;
 import com.renta.autos.models.repositories.IEmpleado;
+import com.renta.autos.models.repositories.IRenta;
 import com.renta.autos.models.service.interfaces.IEmpleadoService;
 
 @Service
@@ -16,6 +18,9 @@ public class EmpleadoService implements IEmpleadoService{
 	@Autowired
 	IEmpleado repository;
 
+	@Autowired
+	IRenta repositoryRenta;
+	
 	@Override
 	@Transactional
 	public void save(Empleado empleado) {
@@ -31,6 +36,12 @@ public class EmpleadoService implements IEmpleadoService{
 	@Override
 	@Transactional
 	public void delete(Integer codigo) {
+		Optional<Empleado> empleado = repository.findById(codigo);
+		if(empleado == null) return;
+		for(Renta renta: empleado.get().getRentas()) {
+			repositoryRenta.deleteById(renta.getCodigoRenta());
+		}
+
 		repository.deleteById(codigo);
 	}
 

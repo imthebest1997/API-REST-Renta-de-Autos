@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.renta.autos.models.entities.Cliente;
+import com.renta.autos.models.entities.Renta;
 import com.renta.autos.models.repositories.ICliente;
+import com.renta.autos.models.repositories.IRenta;
 import com.renta.autos.models.service.interfaces.IClienteService;
 
 @Service
@@ -16,6 +18,9 @@ public class ClienteService implements IClienteService{
 	@Autowired
 	ICliente repository;
 
+	@Autowired
+	IRenta repositoryRenta;
+	
 	@Override
 	@Transactional
 	public void save(Cliente cliente) {
@@ -31,6 +36,11 @@ public class ClienteService implements IClienteService{
 	@Override
 	@Transactional
 	public void delete(Integer codigo) {
+		Optional<Cliente> cliente = repository.findById(codigo);
+		if(cliente == null) return;
+		for(Renta renta: cliente.get().getRenta()) {
+			repositoryRenta.deleteById(renta.getCodigoRenta());
+		}
 		repository.deleteById(codigo);
 	}
 
